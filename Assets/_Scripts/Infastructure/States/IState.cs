@@ -1,4 +1,4 @@
-namespace _Scripts.Infastructure {
+namespace _Scripts.Infastructure.States {
     public interface IState : IExitableState{
         void Enter();
     }

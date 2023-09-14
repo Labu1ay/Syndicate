@@ -1,9 +1,9 @@
 ﻿using _Scripts.CameraLogic;
-using _Scripts.Infastructure.AssetManagement;
+using _Scripts.Infastructure.Factory;
 using _Scripts.Logic;
 using UnityEngine;
 
-namespace _Scripts.Infastructure {
+namespace _Scripts.Infastructure.States {
     public class LoadLevelState : IPayLoadedState<string> {
         private const string _initialPointTag = "InitialPoint";
         private readonly GameStateMachine _stateMachine;
@@ -11,10 +11,11 @@ namespace _Scripts.Infastructure {
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain) {
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain, IGameFactory gameFactory) {
             _stateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
+            _gameFactory = gameFactory;
         }
 
         public void Enter(string sceneName) {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace _Scripts.Infastructure.AssetManagement {
-    public class AssetProvider : IAssetProvider {
+    public class AssetProvider : IAssets {
         public GameObject Instantiate(string path) {
             var prefab = Resources.Load<GameObject>(path);
             return Object.Instantiate(prefab);

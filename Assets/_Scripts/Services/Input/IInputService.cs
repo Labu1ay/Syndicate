@@ -1,7 +1,8 @@
+using _Scripts.Infastructure.Services;
 using UnityEngine;
 
 namespace _Scripts.Services.Input {
-    public interface IInputService {
+    public interface IInputService : IService{
         Vector2 Axis { get; }
         bool IsAttackButton();
     }

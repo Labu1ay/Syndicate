@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Infastructure.Services;
 using _Scripts.Services.Input;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace _Scripts.Hero {
         private Camera _camera;
 
         private void Awake() {
-            _inputService = Game.InputService;
+            _inputService = AllServices.Container.Single<IInputService>();
         }
 
         private void Start() {
