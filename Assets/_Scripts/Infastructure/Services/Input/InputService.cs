@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Scripts.Services.Input {
+namespace _Scripts.Infastructure.Services.Input {
     
     public abstract class InputService : IInputService {
         protected const string Horizontal = "Horizontal";

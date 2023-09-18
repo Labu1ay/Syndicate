@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Infastructure.Factory;
 using _Scripts.Infastructure.Services;
+using _Scripts.Infastructure.Services.PersistentProgress;
+using _Scripts.Infastructure.Services.SaveLoad;
 using _Scripts.Logic;
 
 namespace _Scripts.Infastructure.States {
@@ -12,7 +14,8 @@ namespace _Scripts.Infastructure.States {
         public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain loadingCurtain, AllServices services) {
             _states = new Dictionary<Type, IExitableState>() {
                 {typeof(BootstrapState), new BootstrapState(this, sceneLoader, services)},
-                {typeof(LoadLevelState), new LoadLevelState(this, sceneLoader, loadingCurtain, AllServices.Container.Single<IGameFactory>())},
+                {typeof(LoadLevelState), new LoadLevelState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(), services.Single<IPersistentProgressService>())},
+                {typeof(LoadProgressState), new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>())},
                 {typeof(GameLoopState), new GameLoopState(this)}
             };
         }
